@@ -1,0 +1,79 @@
+<div class="widget-main">
+	<h4 class="header red lighter bigger">
+		<i class="icon-key"></i>
+		个人信息
+	</h4>
+	<div class="space-6"></div>
+	<form name="info" method="POST">
+		<fieldset>
+			<p>VPN连接帐号(只用于L2TP/PPTP)</p>
+			<label class="block clearfix">
+				<span class="block input-icon input-icon-right">
+					<input type="text" name="VPNUser" class="form-control" placeholder="初次配置显示" value="{$UserInfo.vpnuser}"/>
+					<i class="icon-font"></i>
+				</span>
+			</label>
+			<p>VPN连接端口(只用于Shadowsocks)</p>
+			<label class="block clearfix">
+				<span class="block input-icon input-icon-right">
+					<input type="text" name="VPNPort" class="form-control" placeholder="初次配置显示" value="{$UserInfo.vpnport}"/>
+					<i class="icon-refresh"></i>
+				</span>
+			</label>
+			<p>VPN连接密码</p>
+			<label class="block clearfix">
+				<span class="block input-icon input-icon-right">
+					<input type="text" name="VPNPass" class="form-control" placeholder="初次配置显示" value="{$UserInfo.vpnpass}"/>
+					<i class="icon-ok"></i>
+				</span>
+			</label>
+			<p>邮箱</p>
+			<label class="block clearfix">
+				<span class="block input-icon input-icon-right">
+					<input type="email" class="form-control" name="Email" placeholder="Email" value="{$UserInfo.email}"  />
+					<i class="icon-envelope"></i>
+				</span>
+			</label>
+			<p>用户名</p>
+			<label class="block clearfix">
+				<span class="block input-icon input-icon-right">
+					<input type="text" name="Username" class="form-control" readonly placeholder="UserName" value="{$UserInfo.username}" />
+					<i class="icon-user"></i>
+				</span>
+			</label>
+			<p>密码</p>
+			<label class="block clearfix">
+				<span class="block input-icon input-icon-right">
+					<input type="password" onchange="if(document.getElementById('Password').value!=''){
+							document.getElementById('Passwords').type='password';
+							document.getElementById('OldPassword').type='password';
+						}
+						else{
+							document.getElementById('Passwords').type='hidden';
+							document.getElementById('Passwords').value='';
+							document.getElementById('OldPassword').type='hidden';
+							document.getElementById('OldPassword').value='';
+						}" id="Password" name="Password" class="form-control" placeholder="不修改则不填" />
+					<i class="icon-lock"></i>
+				</span>
+			</label>
+			<div class="space-6"></div>
+			<label class="block clearfix">
+				<span class="block input-icon input-icon-right">
+					<input type="hidden"  name="Passwords" id="Passwords" class="form-control" placeholder="重复密码" />
+				</span>
+			</label>
+			<label class="block clearfix">
+				<span class="block input-icon input-icon-right">
+					<input type="hidden"  name="OldPassword" id="OldPassword" class="form-control" placeholder="请输入旧密码" />
+				</span>
+			</label>
+		</fieldset>
+		<div class="clearfix">
+			<button type="submit" class="width-35 pull-right btn btn-sm btn-danger">
+				<i class="icon-ok"></i>
+				修改信息
+			</button>
+		</div>
+	</form>
+</div><!-- /widget-main -->

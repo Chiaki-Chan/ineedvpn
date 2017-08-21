@@ -1,0 +1,156 @@
+        <div class="container-fluid">
+            <div id="pad-wrapper" class="users-list">
+                
+                    <div class="breadcrumbs" id="breadcrumbs">
+                        <script type="text/javascript">
+                            try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                        </script>
+
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="icon-home home-icon"></i>
+                                <a  href="/">素問</a>
+                            </li>
+                            <li class="active">
+                                賬號申請列表
+                            </li>
+                        </ul><!-- .breadcrumb -->
+                    </div>
+                <!-- Users table -->
+                <div class="row-fluid table">
+                        <div class="page-header">
+                            <h1>
+                                <select style="height:39px" class="btn-info" onchange="self.location.href=options[selectedIndex].value">
+                                    <option value="/send.php?c=Admin&a=index&maked=1">当前分类：{$selectnow}
+                                    </option>
+                                    <option value="/send.php?c=Admin&a=index">***所有記錄***
+                                    </option>
+                                    <foreach name="sendinfo" item="sendinfo">
+                                        <option value="/send.php?c=Admin&a=index&maked={$sendinfo}">{$sendinfo}</option>
+                                    </foreach>
+                                </select>
+                                <small>
+                                    <i class="icon-double-angle-right"></i>
+                                    <button class="btn btn-success icon-edit arrowed" onclick="self.location.href='__ROOT__/send.php?c=Admin&a=makesended&tel=all'">處理所有記錄[{$Countumaked}條]
+                                    </button>
+                                </small>
+                                <!--small>
+                                    <i class="icon-double-angle-right"></i>
+                                    <button class="btn btn-success icon-edit arrowed" onclick="self.location.href='__ROOT__/?a=makesended&tel={$JGId}'">處理選中記錄
+                                    </button>
+                                </small-->
+
+                                <small>
+                                    <i class="icon-double-angle-right"></i>
+                                    <button class="btn btn-info icon-trash arrowed" onclick="self.location.href='__ROOT__/send.php?c=Admin&a=delsended&tel=all&make=1'">
+                                        删除已處理記錄[{$Countmaked}條]
+                                    </button>
+                                </small>
+                                <small>
+                                    <i class="icon-double-angle-right"></i>
+                                    <button class="btn btn-danger icon-trash arrowed" onclick="self.location.href='__ROOT__/send.php?c=Admin&a=delsended&tel=all&make=0'">
+                                        删除所有記錄[{$Count}條]
+                                    </button>
+                                </small>
+                            </h1>
+                        </div><!-- /.page-header -->
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="span2 sortable">
+                                </th>
+                                <th class="span3 sortable">
+                                    <span class="line"></span>手機號
+                                </th>
+                                <th class="span3 sortable align-Left">
+                                    <span class="line"></span>邀請人
+                                </th>
+                                <th class="span3 sortable align-Left">
+                                    <span class="line"></span>進度
+                                </th>
+                                <th class="span3 sortable align-Left">
+                                    <span class="line"></span>密碼
+                                </th>
+                                <th class="span3 sortable align-Left">
+                                    <span class="line"></span>端口
+                                </th>
+                                <th class="span3 sortable align-Left">
+                                    <span class="line"></span>申請時
+                                </th>
+                                <th class="span2 sortable">
+                                    <span class="line"></span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <!-- row -->
+                        <foreach name='SendList' item='SendList'>
+                            <tr class="first">
+                                
+                                <td>
+                                    #{$SendList.showid}
+                                </td>
+                                <td>
+                                    <b>{$SendList.tel}</b>
+                                </td>
+                                <td>
+                                    <b>{$SendList.previoustel}</b>
+                                </td>
+                                <td>
+                                    {$SendList.makeinfo}
+                                </td>
+                                <td>
+                                    <b>{$SendList.newpass}</b>
+                                </td>
+                                <td>
+                                    <b>{$SendList.port}</b>
+                                </td>
+                                <td>
+                                    <b>{$SendList.createtime}</b>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger icon-trash" href="__ROOT__/send.php?c=Admin&a=delsended&tel={$SendList.tel}&make=1">
+                                        删除
+                                    </a>
+                                    <a class="btn btn-success icon-pencil" href="__ROOT__/send.php?c=Admin&a=makesended&tel={$SendList.tel}">
+                                        通過
+                                    </a>
+                                    <a class="btn btn-info icon-pencil" href="__ROOT__/send.php?c=Admin&a=makesendedd&tel={$SendList.tel}">
+                                        發送
+                                    </a>
+                                </td>
+                            </tr>
+                        </foreach>
+                        <!-- row -->
+                        </tbody>
+
+                    </table>
+                    <div align="center">
+                        <a style="height:39px" href="{:U('myjj',array('JGId'=>$JGId,'p'=>$p-1))}" class="btn btn-info arrowed" <?php
+                            if($p<=1)
+                                echo 'disabled="true"';
+                        ?>>
+                            <i class="icon-double-angle-left"></i>上一页
+                        </a>
+                        <a style="height:39px" href="{:U('myjj',array('JGId'=>$JGId,'p'=>$p+1))}" class="btn btn-info arrowed-right" <?php
+                            if($p>=$PageOption)
+                                echo 'disabled="true"';
+                        ?>>
+                            下一页<i class="icon-double-angle-right"></i>
+                        </a>
+                        <select style="height:39px" class="btn-info" onchange="self.location.href=options[selectedIndex].value">
+                            <option value="/?a=myjj&JGId={$JGId}&p={$p}">当前第{$p}页</option>
+                            <?php
+                                for($i=1;$i<=$PageOption;$i++)
+                                {
+                                    echo '<option value=\'/?a=myjj&JGId='.$JGId.'&p='.$i.'\'" >第'.$i.'页</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <!-- end users table -->
+            </div>
+        </div>
+    </div>
+    <!-- end main container -->

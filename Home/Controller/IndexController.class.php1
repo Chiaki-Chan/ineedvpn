@@ -1,0 +1,35 @@
+<?php
+namespace Home\Controller;
+use Think\Controller;
+class IndexController extends Controller {
+	function _initialize()
+	{
+		///$this->display('./header');
+		//global
+		//var_dump($_SESSION['UserInfo']);
+		//echo '<br>'.$_SESSION['UserLoged'];
+	}
+    public function index(){
+    	$this->TheTel=$Tel=@$_POST['Tel']?$_POST['Tel']:'';
+    	$PreviousTel=@$_POST['PreviousTel']?$_POST['PreviousTel']:'';
+    	if($Tel){
+	    	if(!M('application')->where(array('Tel'=>$Tel))->find())
+	    		if(M('application')->data(array('Tel'=>$Tel,'PreviousTel'=>$PreviousTel))->add()){
+	    			$sended=1;
+	    			if($PreviousUser=M('user')->where(array('Email'=>$PreviousTel))->find()){
+	    				M('user')->where(array('Email'=>$PreviousTel))->save(array('Invite'=>$PreviousUser['invite']+1));
+	    			}
+	    		}
+	    		else{
+	    			$sended=2;
+	    			$this->Info=$info="攻城獅正在捕食程序猿！系統稍後開放！";
+	    		}
+	    	else{
+	    		$sended=2;
+	    		$this->Info=$info="帥的人已使用該手機號！";
+	    	}
+    	}
+    	$this->sended=$sended;
+		$this->display('./send');
+	}
+}
