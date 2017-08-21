@@ -11,9 +11,9 @@ $tokb = 1024;
 $tomb = 1024*1024;
 $togb = $tomb*1024;
 //Define DB Connection  数据库信息
-define('DB_HOST','localhost');
-define('DB_USER','root');
-define('DB_PWD','Ch1@kiLeft');
+define('DB_HOST','database.ineedvpn.net');
+define('DB_USER','inv');
+define('DB_PWD','chiakileft');
 define('DB_DBNAME','INeedVPN');
 define('DB_CHARSET','utf8');
 define('DB_TYPE','mysql'); 
