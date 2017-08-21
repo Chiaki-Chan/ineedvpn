@@ -1,0 +1,92 @@
+#colorbox:focus,#colorbox:active {
+	outline: 0
+}
+#cboxContent {
+	border: 12px solid #000;
+	background-color: #FFF;
+	padding: 7px
+}
+
+#cboxOverlay {
+	background: rgba(0,0,0,0.95);
+	background: #000
+}
+
+#cboxCurrent {
+	left: 64px;
+	margin-bottom: 4px;
+	font-size: 14px
+}
+
+#cboxTitle {
+	margin-bottom: 4px;
+	font-size: 14px;
+	color: #777
+}
+
+#cboxClose {
+	background: 0;
+	text-indent: 0;
+	width: 26px;
+	height: 26px;
+	line-height: 22px;
+	padding: 0 4px;
+	text-align: center;
+	border: 2px solid #999;
+	border-radius: 16px;
+	color: #666;
+	font-size: 12px;
+	margin-left: 5px;
+	margin-bottom: 5px
+}
+
+#cboxContent {
+	overflow: visible
+}
+
+#cboxClose {
+	background-color: #000;
+	border: 2px solid #fff;
+	border-radius: 32px;
+	color: #fff;
+	font-size: 21px;
+	height: 28px;
+	width: 28px;
+	padding-bottom: 2px;
+	margin-left: 0;
+	right: -14px;
+	top: -14px
+}
+
+#cboxLoadingOverlay {
+	background: none!important
+}
+
+#cboxLoadingGraphic {
+	background: #FFF none!important;
+	text-align: center
+}
+
+#cboxLoadingGraphic>[class*="icon-"] {
+	display: inline-block;
+	background-color: #FFF;
+	border-radius: 8px;
+	width: 32px;
+	height: 32px;
+	position: relative;
+	top: 48%;
+	text-align: center;
+	vertical-align: middle;
+	-moz-animation: spin 1.5s infinite linear;
+	-webkit-animation: spin 1.5s infinite linear;
+	-o-animation: spin 1.5s infinite linear;
+	-ms-animation: spin 1.5s infinite linear;
+	animation: spin 1.5s infinite linear;
+	font-size: 24px;
+	color: #fe7e3e
+}
+.jqstooltip,.legendColorBox div {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box
+}
